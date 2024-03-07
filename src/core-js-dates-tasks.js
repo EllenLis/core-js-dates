@@ -245,12 +245,13 @@ function getWeekNumberByDate(date) {
  * Date(2023, 1, 1) => Date(2023, 9, 13)
  */
 function getNextFridayThe13th(date) {
-  date.setDate(date.getDate() + 1);
-  while (true) {
-    if (date.getDate() === 13 && date.getDay() === 5) {
-      return new Date(date);
+  const searchDate = new Date(date.getTime());
+  searchDate.setDate(searchDate.getDate() + 1);
+  for (;;) {
+    if (searchDate.getDate() === 13 && searchDate.getDay() === 5) {
+      return searchDate;
     }
-    date.setDate(date.getDate() + 1);
+    searchDate.setDate(searchDate.getDate() + 1);
   }
 }
 
